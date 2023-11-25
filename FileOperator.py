@@ -7,11 +7,12 @@
 
 import os, glob
 import subprocess
+from typing import List
 
 from WordOperator import str_format
 
 
-def get_filenames(dir_path: str, specific_name: str, withDirPath=True) -> list:
+def get_filenames(dir_path: str, specific_name: str, withDirPath=True) -> List[str]:
     '''
     get_filenames
     -----
@@ -37,7 +38,7 @@ def get_filenames(dir_path: str, specific_name: str, withDirPath=True) -> list:
     return filenames
 
 
-def check2create_dir(dir: str):
+def check2create_dir(dir: str) -> None:
     '''
     This function checks if a directory exists and creates it if it doesn't.
 
@@ -60,7 +61,7 @@ def check2create_dir(dir: str):
         raise OSError(str_format(f"Fail to create the directory {dir} !", fore='r'))
 
 
-def get_dir_size_py(path: str = '.'):  # slow way
+def get_dir_size_py(path: str = '.') -> int:  # slow way
     '''
     The function calculates the total size of a directory in kilobytes by iterating through all files
     and directories within it.
@@ -88,7 +89,7 @@ def get_dir_size_py(path: str = '.'):  # slow way
     return total_size // 1024  # kilobytes as an integer
 
 
-def get_dir_size_unix(path: str = '.'):  # faster way
+def get_dir_size_unix(path: str = '.') -> int:  # faster way
     '''
     This function returns the size of a directory in kilobytes using the Unix command "du".
 
